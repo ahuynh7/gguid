@@ -4,3 +4,5 @@
 #pragma once
 
 #include <iostream>
+#include <objbase.h>
+#include <windows.h>

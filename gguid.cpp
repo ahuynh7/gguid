@@ -6,11 +6,23 @@
 using namespace std;
 
 int main() {
-	cout << "gguid" << endl;
+	//initialize guid
+	GUID guid;
+	HRESULT hr = CoCreateGuid(&guid);
 
-	string a;
-	cin >> a;
-	cout << a << endl;
+	if (SUCCEEDED(hr)) {
+		wchar_t* guid_string;
+		
+		if (StringFromCLSID(guid, &guid_string) == S_OK) {
+			//print to console
+			wcout << guid_string << endl;
+
+			//free memory allocation
+			CoTaskMemFree(guid_string);
+		}
+		else { return 1; } 
+	}
+	else { return 1; }
 
 	return 0;
 }

@@ -1,0 +1,27 @@
+# Build directories
+/build/
+build-*/
+
+# CMake generated files
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# IDE specific files (if using Visual Studio, CLion, etc.)
+*.sln
+*.vcxproj*
+*.idea/
+*.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+

@@ -1,6 +1,8 @@
 # Build directories
 /build/
 build-*/
+/out/
+out-*/
 
 # CMake generated files
 CMakeLists.txt.user
@@ -20,6 +22,7 @@ _deps
 *.vcxproj*
 *.idea/
 *.vscode/
+*.vs
 
 # OS generated files
 .DS_Store

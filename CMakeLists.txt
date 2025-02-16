@@ -11,3 +11,7 @@ add_executable(gguid "gguid.cpp" "gguid.h")
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET gguid PROPERTY CXX_STANDARD 20)
 endif()
+
+#add subdirectories
+add_subdirectory(CLI11)
+target_link_libraries(gguid CLI11::CLI11)

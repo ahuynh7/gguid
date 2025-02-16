@@ -5,7 +5,24 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char **argv) {
+	//handle command line arguments
+	CLI::App app;
+
+	//flag to generate empty guid(s)
+	bool empty_guid = false;
+	app.add_flag("-e,--empty", empty_guid, "Generate empty GUID(s)");
+
+	CLI11_PARSE(app, argc, argv);
+
+	if (empty_guid) {
+		const string empty_guid_string = "00000000-0000-0000-0000-000000000000";
+
+		cout << empty_guid_string << endl;
+
+		return 0;
+	}
+
 	//initialize guid
 	GUID guid;
 	HRESULT hr = CoCreateGuid(&guid);

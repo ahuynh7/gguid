@@ -4,6 +4,7 @@
 #pragma once
 #pragma warning(disable : 4996)		//_CRT_SECURE_NO_WARNINGS
 
+#include <CLI/CLI.hpp>
 #include <iostream>
 #include <objbase.h>
 #include <string>

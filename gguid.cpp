@@ -2,6 +2,7 @@
 
 using namespace std;
 
+#ifdef _WIN32
 static wchar_t* generate_guid_string() {
 	//initialize guid
 	GUID guid;
@@ -30,6 +31,15 @@ static wchar_t* generate_guid_string() {
 		throw exception("Error parsing string from GUID");
 	}
 }
+#endif
+
+#ifdef _LIBUUID
+static wchar_t* generate_guid_string() {
+	wchar_t* temp = new wchar_t[36];
+
+	return temp;
+}
+#endif
 
 int main(int argc, char **argv) {
 	//handle command line arguments

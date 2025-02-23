@@ -15,6 +15,12 @@ endif()
 #set preprocessor definition based on platform
 if (WIN32)
   target_compile_definitions(gguid PRIVATE _WIN32)
+
+elseif(APPLE)
+
+else()
+    target_compile_definitions(gguid PRIVATE _LIBUUID)
+
 endif()
 
 #add subdirectories

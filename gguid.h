@@ -10,3 +10,7 @@
 #ifdef _WIN32
 	#include <objbase.h>
 #endif
+
+#ifdef _LIBUUID
+	#include <uuid/uuid.h>
+#endif

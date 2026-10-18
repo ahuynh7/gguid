@@ -12,7 +12,7 @@ static wchar_t* generate_guid_string() {
 
 	const int LENGTH = 36;
 	wchar_t* guid_string;
-	wchar_t* formatted_guid_string = new wchar_t[LENGTH + 1];		//todo: use a smart pointer to manage memory instead
+	wchar_t* formatted_guid_string = new wchar_t[LENGTH + 1];
 
 	if (StringFromCLSID(guid, &guid_string) == S_OK) {
 
@@ -35,9 +35,25 @@ static wchar_t* generate_guid_string() {
 
 #ifdef _LIBUUID
 static wchar_t* generate_guid_string() {
-	wchar_t* temp = new wchar_t[36];
+	//initialize guid
+	uuid_t guid;
 
-	return temp;
+	uuid_generate_random(guid);
+
+	const int LENGTH = 36;
+	char* guid_string = new char[LENGTH + 1];
+	wchar_t* formatted_guid_string = new wchar_t[LENGTH + 1];
+
+	uuid_unparse_lower(guid, guid_string);
+
+	//convert/copy char* output to wchar_t*
+	for (int i = 0; i <= LENGTH; i++) {
+		formatted_guid_string[i] = guid_string[i];
+	}
+
+	delete[] guid_string;
+
+	return formatted_guid_string;
 }
 #endif
 
@@ -78,6 +94,7 @@ int main(int argc, char **argv) {
 
 	for (int i = 0; i < count; i++) {
 		try {
+			//todo: return a string instead; it's simple
 			wchar_t* guid_string = generate_guid_string();
 
 			wcout << guid_string << endl;

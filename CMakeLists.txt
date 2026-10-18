@@ -12,6 +12,21 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET gguid PROPERTY CXX_STANDARD 20)
 endif()
 
+#set preprocessor definition based on platform
+if (WIN32)
+  target_compile_definitions(gguid PRIVATE _WIN32)
+
+elseif(APPLE)
+
+else()
+    target_compile_definitions(gguid PRIVATE _LIBUUID)
+    target_link_libraries(gguid PRIVATE uuid)
+
+endif()
+  
 #add subdirectories
 add_subdirectory(CLI11)
-target_link_libraries(gguid CLI11::CLI11)
+target_link_libraries(gguid PRIVATE CLI11::CLI11)
+
+#install 
+install(TARGETS gguid RUNTIME DESTINATION bin)
